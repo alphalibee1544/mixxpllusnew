@@ -5,42 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MixxPlus - Maelezo ya Mkopo</title>
     <style>
-        :root { --primary: #2563eb; --gold: #f59e0b; --gold-dark: #d97706; --light-yellow: #fffef5; --success: #10b981; --danger: #ef4444; --dark: #1e293b; --gray: #64748b; --white: #ffffff; --light-navy: #2c3e6b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--light-yellow); color: var(--dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
-        .brand-bar { background: var(--light-navy); text-align: center; padding: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; border-bottom: 2px solid var(--gold); }
-        .brand-logo { width: 32px; height: 32px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; color: var(--light-navy); }
-        .brand-text { font-size: 1.1rem; font-weight: 700; } .brand-text .mixx { color: var(--white); } .brand-text .plus { color: var(--gold); }
-        .back-link { display: block; padding: 1rem 1.5rem; color: var(--gray); text-decoration: none; font-size: 0.9rem; max-width: 500px; margin: 0 auto; }
-        .main-container { max-width: 500px; margin: 0 auto 2rem; padding: 0 1rem; flex: 1; }
-        .card { background: var(--white); border-radius: 14px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #fef3c7; }
-        .card h2 { margin-bottom: 0.5rem; }
-        .card .sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .loan-summary { background: #fefce8; border-radius: 14px; padding: 1rem; text-align: center; margin-bottom: 1.5rem; }
-        .loan-summary .amount { font-size: 1.6rem; font-weight: 900; color: var(--primary); }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
-        .form-group select, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 2px solid #fef3c7; border-radius: 14px; font-size: 1rem; font-family: inherit; outline: none; background: #fff; }
-        .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
-        .form-group textarea { min-height: 80px; resize: vertical; }
-        .btn { width: 100%; padding: 0.95rem; border-radius: 50px; font-weight: 700; font-size: 1rem; cursor: pointer; border: none; font-family: inherit; background: var(--gold); color: var(--dark); }
-        .btn:hover { background: var(--gold-dark); }
-        .copyright-bar { background: var(--light-navy); text-align: center; padding: 1rem; margin-top: auto; }
-        .copyright-bar p { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
-        .error-msg { color: var(--danger); font-size: 0.8rem; margin-top: 0.3rem; display: none; }
-        .error-msg.show { display: block; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-bar {
+            background: #1a2332;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-bottom: 3px solid #f5a623;
+        }
+        .brand-bar .logo {
+            background: #f5a623;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            color: #1a2332;
+        }
+        .brand-bar .name {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .brand-bar .name span {
+            color: #f5a623;
+        }
+        .back-link {
+            display: block;
+            padding: 15px 20px;
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 14px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 20px 20px;
+            flex: 1;
+            width: 100%;
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #1a2332;
+        }
+        .card .sub {
+            color: #6c757d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .loan-summary {
+            background: #fefce8;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .loan-summary .amount {
+            font-size: 28px;
+            font-weight: 900;
+            color: #2563eb;
+        }
+        .loan-summary .label {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1a2332;
+            margin-bottom: 5px;
+        }
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            background: #fff;
+            transition: border 0.3s;
+        }
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #f5a623;
+        }
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .error-msg {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-msg.show {
+            display: block;
+        }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            background: #f5a623;
+            color: #1a2332;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 5px;
+        }
+        .btn:hover {
+            background: #e0991a;
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            background: #1a2332;
+            color: rgba(255,255,255,0.5);
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
-    <div class="brand-bar"><div class="brand-logo">M</div><div class="brand-text"><span class="mixx">Mixx</span><span class="plus">Plus</span></div></div>
+    <div class="brand-bar">
+        <div class="logo">M</div>
+        <div class="name">Mixx<span>Plus</span></div>
+    </div>
     <a href="/" class="back-link">← Rudi</a>
-    <div class="main-container">
+    <div class="container">
         <div class="card">
             <h2>📋 Maelezo ya Mkopo</h2>
-            <p class="sub">Jaza taarifa zako</p>
+            <p class="sub">Jaza taarifa zako kuendelea</p>
             
             <div class="loan-summary">
-                <div style="font-size:0.75rem;color:var(--gray);">Kiasi Ulichochagua</div>
+                <div class="label">Kiasi Ulichochagua</div>
                 <div class="amount" id="loanAmount">TZS 0</div>
             </div>
             
@@ -48,25 +179,28 @@
                 <label>Aina ya Mkopo</label>
                 <select id="loanType">
                     <option value="">-- Chagua aina --</option>
+                    <option value="mkopo_binafsi">Mkopo Binafsi</option>
                     <option value="biashara">Biashara</option>
+                    <option value="kilimo">Kilimo</option>
                     <option value="elimu">Elimu</option>
-                    <option value="matibabu">Matibabu</option>
+                    <option value="dharura">Dharura</option>
                     <option value="nyumbani">Nyumbani</option>
                     <option value="mtaji">Mtaji</option>
                     <option value="kingine">Kingine</option>
                 </select>
+                <div class="error-msg" id="loanTypeError">Tafadhali chagua aina ya mkopo</div>
             </div>
             
             <div class="form-group">
-                <label>Sababu ya Mkopo</label>
-                <textarea id="purpose" placeholder="Eleza kwa nini unahitaji mkopo..."></textarea>
+                <label>Madhumuni ya Mkopo</label>
+                <textarea id="loanPurpose" placeholder="Eleza kwa nini unahitaji mkopo huu..."></textarea>
+                <div class="error-msg" id="loanPurposeError">Tafadhali eleza madhumuni ya mkopo</div>
             </div>
             
             <button class="btn" onclick="submitApply()">Omba Mkopo →</button>
-            <div class="error-msg" id="applyError">Tafadhali jaza taarifa zote</div>
         </div>
     </div>
-    <div class="copyright-bar"><p>© 2024 MixxPlus</p></div>
+    <div class="footer">© 2024 MixxPlus</div>
 
     <script>
         // Get amount and term from URL
@@ -78,19 +212,24 @@
 
         function submitApply() {
             var loanType = document.getElementById('loanType').value;
-            var purpose = document.getElementById('purpose').value.trim();
+            var purpose = document.getElementById('loanPurpose').value.trim();
+            var isValid = true;
             
             if (!loanType) {
-                document.getElementById('applyError').textContent = 'Tafadhali chagua aina ya mkopo';
-                document.getElementById('applyError').classList.add('show');
-                return;
+                document.getElementById('loanTypeError').classList.add('show');
+                isValid = false;
+            } else {
+                document.getElementById('loanTypeError').classList.remove('show');
             }
             
             if (!purpose || purpose.length < 5) {
-                document.getElementById('applyError').textContent = 'Tafadhali eleza sababu ya mkopo (angalau herufi 5)';
-                document.getElementById('applyError').classList.add('show');
-                return;
+                document.getElementById('loanPurposeError').classList.add('show');
+                isValid = false;
+            } else {
+                document.getElementById('loanPurposeError').classList.remove('show');
             }
+            
+            if (!isValid) return;
             
             // Save to localStorage
             var loanData = {
@@ -101,7 +240,7 @@
             };
             localStorage.setItem('loan_data', JSON.stringify(loanData));
             
-            // Redirect to approve page with amount and term
+            // Redirect to approve page
             window.location.href = '/approve?amount=' + amount + '&term=' + term;
         }
     </script>
