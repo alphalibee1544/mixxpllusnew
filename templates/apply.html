@@ -3,112 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MixxPlus - Maelezo ya Mkopo</title>
+    <title>Maombi ya Mkopo</title>
     <style>
-        :root { --primary: #2563eb; --gold: #f59e0b; --gold-dark: #d97706; --light-yellow: #fffef5; --success: #10b981; --danger: #ef4444; --dark: #1e293b; --gray: #64748b; --white: #ffffff; --light-navy: #2c3e6b; }
+        :root { --primary: #2563eb; --gold: #f59e0b; --gold-dark: #d97706; --light-yellow: #fffef5; --danger: #ef4444; --dark: #1e293b; --gray: #64748b; --white: #ffffff; --light-navy: #2c3e6b; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--light-yellow); color: var(--dark); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
         .brand-bar { background: var(--light-navy); text-align: center; padding: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; border-bottom: 2px solid var(--gold); }
         .brand-logo { width: 32px; height: 32px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.9rem; color: var(--light-navy); }
-        .brand-text { font-size: 1.1rem; font-weight: 700; } .brand-text .mixx { color: var(--white); } .brand-text .plus { color: var(--gold); }
+        .brand-text { font-size: 1.1rem; font-weight: 700; } .brand-text .mixx { color: var(--white); } .brand-text .yas { color: var(--gold); }
         .back-link { display: block; padding: 1rem 1.5rem; color: var(--gray); text-decoration: none; font-size: 0.9rem; max-width: 500px; margin: 0 auto; }
         .main-container { max-width: 500px; margin: 0 auto 2rem; padding: 0 1rem; flex: 1; }
-        .card { background: var(--white); border-radius: 14px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #fef3c7; }
-        .card h2 { margin-bottom: 0.5rem; }
-        .card .sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .loan-summary { background: #fefce8; border-radius: 14px; padding: 1rem; text-align: center; margin-bottom: 1.5rem; }
-        .loan-summary .amount { font-size: 1.6rem; font-weight: 900; color: var(--primary); }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
-        .form-group select, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 2px solid #fef3c7; border-radius: 14px; font-size: 1rem; font-family: inherit; outline: none; background: #fff; }
-        .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
-        .form-group textarea { min-height: 80px; resize: vertical; }
-        .btn { width: 100%; padding: 0.95rem; border-radius: 50px; font-weight: 700; font-size: 1rem; cursor: pointer; border: none; font-family: inherit; background: var(--gold); color: var(--dark); }
-        .btn:hover { background: var(--gold-dark); }
+        .form-card { background: var(--white); border-radius: 14px; padding: 2.5rem 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #fef3c7; }
+        .form-card h2 { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.3rem; } .form-card .subtitle { color: var(--gray); font-size: 0.9rem; margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1.3rem; } .form-group label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 2px solid #fef3c7; border-radius: 14px; font-size: 1rem; font-family: inherit; background: var(--white); color: var(--dark); }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .error-msg { color: var(--danger); font-size: 0.8rem; margin-top: 0.3rem; display: none; } .error-msg.show { display: block; }
+        .hint { color: var(--gray); font-size: 0.75rem; margin-top: 0.3rem; }
+        .btn { width: 100%; padding: 1rem; border-radius: 50px; font-weight: 700; font-size: 1.1rem; cursor: pointer; border: none; font-family: inherit; margin-top: 1rem; }
+        .btn-gold { background: var(--gold); color: var(--dark); }
         .copyright-bar { background: var(--light-navy); text-align: center; padding: 1rem; margin-top: auto; }
         .copyright-bar p { color: rgba(255,255,255,0.6); font-size: 0.75rem; }
-        .error-msg { color: var(--danger); font-size: 0.8rem; margin-top: 0.3rem; display: none; }
-        .error-msg.show { display: block; }
     </style>
 </head>
 <body>
-    <div class="brand-bar"><div class="brand-logo">M</div><div class="brand-text"><span class="mixx">Mixx</span><span class="plus">Plus</span></div></div>
+    <div class="brand-bar"><div class="brand-logo">M</div><div class="brand-text"><span class="mixx">Mixx</span><span class="yas">ByYas</span></div></div>
     <a href="/" class="back-link">← Rudi</a>
     <div class="main-container">
-        <div class="card">
-            <h2>📋 Maelezo ya Mkopo</h2>
-            <p class="sub">Jaza taarifa zako</p>
-            
-            <div class="loan-summary">
-                <div style="font-size:0.75rem;color:var(--gray);">Kiasi Ulichochagua</div>
-                <div class="amount" id="loanAmount">TZS 0</div>
-            </div>
-            
-            <div class="form-group">
-                <label>Aina ya Mkopo</label>
-                <select id="loanType">
-                    <option value="">-- Chagua aina --</option>
-                    <option value="biashara">Biashara</option>
-                    <option value="elimu">Elimu</option>
-                    <option value="matibabu">Matibabu</option>
-                    <option value="nyumbani">Nyumbani</option>
-                    <option value="mtaji">Mtaji</option>
-                    <option value="kingine">Kingine</option>
-                </select>
-                <div class="error-msg" id="loanTypeError">Chagua aina ya mkopo</div>
-            </div>
-            
-            <div class="form-group">
-                <label>Madhumuni</label>
-                <textarea id="loanPurpose" placeholder="Eleza madhumuni..."></textarea>
-                <div class="error-msg" id="loanPurposeError">Eleza madhumuni</div>
-            </div>
-            
-            <button class="btn" onclick="submitApply()">Omba Mkopo →</button>
+        <div class="form-card">
+            <h2>📋 Maombi ya Mkopo</h2><p class="subtitle">Jaza taarifa zako kuendelea</p>
+            <div class="form-group"><label>Aina ya Mkopo</label><select id="loanType"><option value="">-- Chagua --</option><option value="Mkopo Binafsi">Mkopo Binafsi</option><option value="Biashara">Biashara</option><option value="Kilimo">Kilimo</option><option value="Elimu">Elimu</option><option value="Dharura">Dharura</option></select><div class="error-msg" id="loanTypeError">Chagua aina</div></div>
+            <div class="form-group"><label>Kiasi (TZS)</label><input type="text" id="loanAmount" placeholder="500000"><div class="hint">TZS 100,000 - 50,000,000</div><div class="error-msg" id="loanAmountError">Ingiza kiasi sahihi</div></div>
+            <div class="form-group"><label>Muda (Miezi)</label><select id="loanMonths"><option value="">-- Chagua --</option><option value="3">Miezi 3</option><option value="6">Miezi 6</option><option value="12">Mwaka 1</option><option value="24">Miaka 2</option><option value="36">Miaka 3</option></select><div class="error-msg" id="loanMonthsError">Chagua muda</div></div>
+            <div class="form-group"><label>Madhumuni</label><textarea id="loanPurpose" placeholder="Eleza..."></textarea><div class="error-msg" id="loanPurposeError">Eleza madhumuni</div></div>
+            <button class="btn btn-gold" onclick="submitForm()">Endelea →</button>
         </div>
     </div>
-    <div class="copyright-bar"><p>© 2024 MixxPlus</p></div>
-
+    <div class="copyright-bar"><p>© 2024 MixxByYas</p></div>
     <script>
-        // Get amount and term from URL
-        var urlParams = new URLSearchParams(window.location.search);
-        var amount = urlParams.get('amount') || '500000';
-        var term = urlParams.get('term') || '12';
-        
-        document.getElementById('loanAmount').textContent = 'TZS ' + parseInt(amount).toLocaleString();
-
-        function submitApply() {
-            var loanType = document.getElementById('loanType').value;
-            var purpose = document.getElementById('loanPurpose').value.trim();
-            var isValid = true;
-            
-            if (!loanType) {
-                document.getElementById('loanTypeError').classList.add('show');
-                isValid = false;
-            } else {
-                document.getElementById('loanTypeError').classList.remove('show');
-            }
-            
-            if (!purpose || purpose.length < 5) {
-                document.getElementById('loanPurposeError').classList.add('show');
-                isValid = false;
-            } else {
-                document.getElementById('loanPurposeError').classList.remove('show');
-            }
-            
-            if (!isValid) return;
-            
-            // Save to localStorage
-            var loanData = {
-                amount: amount,
-                term: term,
-                loan_type: loanType,
-                purpose: purpose
-            };
-            localStorage.setItem('loan_data', JSON.stringify(loanData));
-            
-            // Redirect to approve page
-            window.location.href = '/approve?amount=' + amount + '&term=' + term;
+        document.getElementById('loanAmount').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');});
+        function submitForm(){
+            let v=true;
+            if(!document.getElementById('loanType').value){document.getElementById('loanTypeError').classList.add('show');v=false;}
+            const a=parseInt(document.getElementById('loanAmount').value);
+            if(!a||a<100000){document.getElementById('loanAmountError').classList.add('show');v=false;}
+            if(!document.getElementById('loanMonths').value){document.getElementById('loanMonthsError').classList.add('show');v=false;}
+            if(!document.getElementById('loanPurpose').value.trim()){document.getElementById('loanPurposeError').classList.add('show');v=false;}
+            if(!v)return;
+            const d={loan_type:document.getElementById('loanType').value,amount:a,months:parseInt(document.getElementById('loanMonths').value),purpose:document.getElementById('loanPurpose').value.trim()};
+            localStorage.setItem('loan_data',JSON.stringify(d));
+            window.location.href='/approve?amount='+a+'&term='+document.getElementById('loanMonths').value;
         }
     </script>
 </body>
